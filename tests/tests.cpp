@@ -24,20 +24,20 @@ void teste_insere() {
     ListaSimplesmenteEncadeada* lista = criaLista();
 
     // Insere primeiro elemento
-    insere(*lista, 10);
+    insereInicio(*lista, 10);
     assert(lista->cardinalidade == 1);
     assert(lista->inicio != NULL);
     assert(lista->inicio->conteudo == 10);
     assert(lista->inicio->proximo == NULL);
 
     // Insere segundo elemento (deve ficar no início)
-    insere(*lista, 20);
+    insereInicio(*lista, 20);
     assert(lista->cardinalidade == 2);
     assert(lista->inicio->conteudo == 20);
     assert(lista->inicio->proximo->conteudo == 10);
 
     // Insere terceiro elemento
-    insere(*lista, 30);
+    insereInicio(*lista, 30);
     assert(lista->cardinalidade == 3);
     assert(lista->inicio->conteudo == 30);
     assert(lista->inicio->proximo->conteudo == 20);
@@ -55,9 +55,9 @@ void teste_destroiLista() {
     ListaSimplesmenteEncadeada* lista = criaLista();
 
     // Insere elementos
-    insere(*lista, 1);
-    insere(*lista, 2);
-    insere(*lista, 3);
+    insereInicio(*lista, 1);
+    insereInicio(*lista, 2);
+    insereInicio(*lista, 3);
 
     // Destrói a lista
     destroiLista(*lista);
@@ -67,6 +67,98 @@ void teste_destroiLista() {
 
     free(lista);
     cout << "destroiLista() passou em todos os testes" << endl;
+}
+
+void teste_mostraLista() {
+    cout << "Testando mostraLista()..." << endl;
+
+    ListaSimplesmenteEncadeada* lista = criaLista();
+
+    // Insere elementos
+    insereInicio(*lista, 1);
+    insereInicio(*lista, 2);
+    insereInicio(*lista, 3);
+
+    cout << "Conteúdo da lista (deve ser 3 2 1): ";
+    mostraLista(*lista);
+
+    destroiLista(*lista);
+    free(lista);
+    cout << "mostraLista() passou em todos os testes" << endl;
+}
+
+void teste_removeElemento() {
+    cout << "Testando removeElemento()..." << endl;
+
+    ListaSimplesmenteEncadeada* lista = criaLista();
+
+    // Insere elementos
+    insereInicio(*lista, 1);
+    insereInicio(*lista, 2);
+    insereInicio(*lista, 3);
+
+    // Remove elemento do meio
+    removeElemento(*lista, 1);
+    assert(lista->cardinalidade == 2);
+    assert(lista->inicio->conteudo == 3);
+    assert(lista->inicio->proximo->conteudo == 1);
+
+    // Remove elemento do início
+    removeElemento(*lista, 0);
+    assert(lista->cardinalidade == 1);
+    assert(lista->inicio->conteudo == 1);
+
+    // Remove último elemento
+    removeElemento(*lista, 0);
+    assert(lista->cardinalidade == 0);
+    assert(lista->inicio == NULL);
+
+    destroiLista(*lista);
+    free(lista);
+    cout << "removeElemento() passou em todos os testes" << endl;
+}
+
+void teste_inverteLista() {
+    cout << "Testando inverteLista()..." << endl;
+
+    ListaSimplesmenteEncadeada* lista = criaLista();
+
+    // Insere elementos
+    insereInicio(*lista, 1);
+    insereInicio(*lista, 2);
+    insereInicio(*lista, 3);
+
+    // Inverte a lista
+    inverteLista(*lista);
+    assert(lista->cardinalidade == 3);
+    assert(lista->inicio->conteudo == 1);
+    assert(lista->inicio->proximo->conteudo == 2);
+    assert(lista->inicio->proximo->proximo->conteudo == 3);
+
+    destroiLista(*lista);
+    free(lista);
+    cout << "inverteLista() passou em todos os testes" << endl;
+}
+
+void teste_verificaPosicaoValida() {
+    cout << "Testando verificaPosicaoValida()..." << endl;
+
+    ListaSimplesmenteEncadeada* lista = criaLista();
+
+    // Insere elementos
+    insereInicio(*lista, 1);
+    insereInicio(*lista, 2);
+    insereInicio(*lista, 3);
+
+    assert(verificaPosicaoValida(*lista, 0) == true);
+    assert(verificaPosicaoValida(*lista, 1) == true);
+    assert(verificaPosicaoValida(*lista, 2) == true);
+    assert(verificaPosicaoValida(*lista, 3) == false);
+    assert(verificaPosicaoValida(*lista, -1) == false);
+
+    destroiLista(*lista);
+    free(lista);
+    cout << "verificaPosicaoValida() passou em todos os testes" << endl;
 }
 
 // ===== FUNÇÃO PRINCIPAL =====
@@ -79,6 +171,11 @@ int main() {
         teste_criaLista();
         teste_insere();
         teste_destroiLista();
+        teste_mostraLista();
+        teste_inverteLista();
+        teste_removeElemento();
+        teste_verificaPosicaoValida();
+
 
         cout << "\n=========================================" << endl;
         cout << "  TODOS OS TESTES PASSARAM COM SUCESSO!" << endl;
