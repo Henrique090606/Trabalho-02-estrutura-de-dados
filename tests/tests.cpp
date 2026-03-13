@@ -74,7 +74,7 @@ void teste_mostraLista() {
 
     ListaSimplesmenteEncadeada* lista = criaLista();
 
-    // Insere elementos
+    
     insereInicio(*lista, 1);
     insereInicio(*lista, 2);
     insereInicio(*lista, 3);
@@ -92,23 +92,23 @@ void teste_removeElemento() {
 
     ListaSimplesmenteEncadeada* lista = criaLista();
 
-    // Insere elementos
+   
     insereInicio(*lista, 1);
     insereInicio(*lista, 2);
     insereInicio(*lista, 3);
 
-    // Remove elemento do meio
+    
     removeElemento(*lista, 1);
     assert(lista->cardinalidade == 2);
     assert(lista->inicio->conteudo == 3);
     assert(lista->inicio->proximo->conteudo == 1);
 
-    // Remove elemento do início
+    
     removeElemento(*lista, 0);
     assert(lista->cardinalidade == 1);
     assert(lista->inicio->conteudo == 1);
 
-    // Remove último elemento
+    
     removeElemento(*lista, 0);
     assert(lista->cardinalidade == 0);
     assert(lista->inicio == NULL);
@@ -122,13 +122,12 @@ void teste_inverteLista() {
     cout << "Testando inverteLista()..." << endl;
 
     ListaSimplesmenteEncadeada* lista = criaLista();
-
-    // Insere elementos
+    
     insereInicio(*lista, 1);
     insereInicio(*lista, 2);
     insereInicio(*lista, 3);
 
-    // Inverte a lista
+    
     inverteLista(*lista);
     assert(lista->cardinalidade == 3);
     assert(lista->inicio->conteudo == 1);
@@ -145,7 +144,7 @@ void teste_verificaPosicaoValida() {
 
     ListaSimplesmenteEncadeada* lista = criaLista();
 
-    // Insere elementos
+    
     insereInicio(*lista, 1);
     insereInicio(*lista, 2);
     insereInicio(*lista, 3);
