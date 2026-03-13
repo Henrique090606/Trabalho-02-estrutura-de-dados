@@ -1,18 +1,18 @@
 # 01 - Lista Simplesmente Encadeada (Linked List)
 
 ## Descrição
-Exercício com Lista Simplesmente Encadeada (Linked List).
+Exercício com Lista Simplesmente Encadeada (Linked List) usando alocação dinâmica de memória.
 
 ## Funcionalidades
 - [x] Criação/Inicialização: criar uma lista vazia
 - [x] Inserção: início da lista
 - [x] Liberar lista (destroi): Liberar a memória da lista
-- [ ] Mostrar lista: imprime os elementos da lista
-- [ ] Lista Vazia: verifica se lista está vazia
-- [ ] Número de Elementos: quantidade de elementos na lista
-- [ ] Inserção: posição específica
-- [ ] Remoção: elemento (node) de posição específica
-- [ ] Inversão: Inverter os elementos da lista
+- [x] Mostrar lista: imprime os elementos da lista
+- [x] Lista Vazia: verifica se lista está vazia
+- [x] Número de Elementos: quantidade de elementos na lista
+- [x] Inserção: posição específica
+- [x] Remoção: elemento (node) de posição específica
+- [x] Inversão: Inverter os elementos da lista
 
 ## Pré-requisitos
 
@@ -23,6 +23,8 @@ Exercício com Lista Simplesmente Encadeada (Linked List).
 - **Editor:** Visual Studio Code (opcional)
 
 ## Instalação
+
+## Exemplo de saída
 
 1. Clone o repositório.
 2. Certifique-se de ter o `g++` e `gdb` instalados em seu sistema.
