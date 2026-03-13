@@ -25,7 +25,7 @@ Exercício com Lista Simplesmente Encadeada (Linked List) usando alocação din�
 ## Instalação
 
 ## Exemplo de saída
-```
+```bash
 Inserindo no inicio
 10
 20 10
