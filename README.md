@@ -25,10 +25,12 @@ Exercício com Lista Simplesmente Encadeada (Linked List) usando alocação din�
 ## Instalação
 
 ## Exemplo de saída
+```
 Inserindo no inicio
 10
 20 10
 30 20 10
+```
 
 1. Clone o repositório.
 2. Certifique-se de ter o `g++` e `gdb` instalados em seu sistema.
