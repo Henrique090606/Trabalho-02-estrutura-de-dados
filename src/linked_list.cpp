@@ -182,3 +182,13 @@ void mostraRotaContraria(ListaDuplamenteEncadeada &lista){
 int contagemParadas(ListaDuplamenteEncadeada &lista){
     return lista.cardinalidade;
 }
+
+void liberaLista(ListaDuplamenteEncadeada* lista) {
+    Node* atual = lista->inicio;
+    while (atual != NULL) {
+        Node* temp = atual;
+        atual = atual->proximo;
+        delete temp;
+    }
+    delete lista;
+}

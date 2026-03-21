@@ -53,8 +53,9 @@ int main() {
 
     }while(opcao!=0);
 
-    cout<<"Saindo..."<<endl;
-    
+    cout<<"Liberando lista e saindo..."<<endl;
+    liberaLista(lista);
+
     return 0;
 }
 
