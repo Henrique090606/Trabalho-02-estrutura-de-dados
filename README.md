@@ -1,102 +1,23 @@
-# 01 - Lista Simplesmente Encadeada (Linked List)
+Respondendo as perguntas:
 
-## Descrição
-Exercício com Lista Simplesmente Encadeada (Linked List) usando alocação dinâmica de memória.
+1. Qual variação de lista foi escolhida (simplesmente encadeada,
+duplamente encadeada ou circular)?
 
-## Funcionalidades
-- [x] Criação/Inicialização: criar uma lista vazia
-- [x] Inserção: início da lista
-- [x] Liberar lista (destroi): Liberar a memória da lista
-- [x] Mostrar lista: imprime os elementos da lista
-- [x] Lista Vazia: verifica se lista está vazia
-- [x] Número de Elementos: quantidade de elementos na lista
-- [x] Inserção: posição específica
-- [x] Remoção: elemento (node) de posição específica
-- [x] Inversão: Inverter os elementos da lista
+  A variação de lista escolhida foi a Lista Duplamente Encadeada.
 
-## Pré-requisitos
 
-## Ferramentas de Desenvolvimento
+2. Por que essa estrutura é mais adequada para esse problema
+do que as demais? Justifique com base nas operações
+implementadas.
 
-- **Compilador:** GCC/G++
-- **Debugger:** GDB
-- **Editor:** Visual Studio Code (opcional)
+  Essa é a mais adequada pois ela pode ser percorrida nos dois sentidos, facilitando operações de inserção e de exibição da rota, 
+  pois ao ter os campos próximo e anterior, faz com que não seja preciso percorrer a lista inteira toda vez que quisermos fazer uma operação, 
+  tornando-as assim muito mais práticas e fáceis de usar do que em comparação a uma lista simplesmente encadeada ou circular.
 
-## Instalação
 
-## Exemplo de saída
-```bash
-Inserindo no inicio
-10
-20 10
-30 20 10
-```
+3. Haveria algum cenário real (ex: linha circular de ônibus) em que
+outra variação de lista seria mais vantajosa? Explique.
 
-1. Clone o repositório.
-2. Certifique-se de ter o `g++` e `gdb` instalados em seu sistema.
-
-# Execução
-
-## Compilação Manual
-
-Para compilar o projeto manualmente via terminal:
-
-```bash
-g++ main.cpp src/linked_list.cpp -Iinclude -o main
-./main
-```
-
-## Depuração (Debugging)
-
-### Via VSCode (Interface Gráfica)
-
-O projeto já está configurado com os arquivos `.vscode/tasks.json` e `.vscode/launch.json`.
-
-1.  Abra a pasta do projeto no VSCode.
-2.  Coloque breakpoints clicando na margem esquerda do código.
-3.  Pressione **F5** ou acesse a aba **Run and Debug** e clique em "Debug Linked List".
-4.  O VSCode irá compilar o projeto com símbolos de debug (`-g`) automaticamente antes de iniciar a sessão.
-
-### Via CLI (Terminal com GDB)
-
-1.  **Compilar com símbolos de debug:**
-    ```bash
-    g++ -g main.cpp src/linked_list.cpp -Iinclude -o main
-    ```
-
-2.  **Iniciar o GDB:**
-    ```bash
-    gdb ./main
-    ```
-
-3.  **Comandos básicos do GDB:**
-    - `break main`: Define um ponto de parada na função principal.
-    - `run` (ou `r`): Inicia a execução do programa.
-    - `next` (ou `n`): Executa a próxima linha de código.
-    - `step` (ou `s`): Entra em uma função.
-    - `print <variavel>` (ou `p`): Exibe o valor de uma variável.
-    - `continue` (ou `c`): Continua a execução até o próximo breakpoint.
-    - `info breakpoints`: Lista todos os breakpoints.
-    - `quit` (ou `q`): Sai do GDB.
-
-4. **Fluxo de Exemplo**:
-
-    ```
-    (gdb) info breakpoints
-    (gdb) break main
-    (gdb) break criaLista()
-    (gdb) run
-    (gdb) next
-    (gdb) next
-    (gdb) print lista
-    (gdb) quit
-    ```
-
-## Fluxo de Testes
-
-Para compilar e rodar os testes:
-
-```bash
-g++ tests/tests.cpp src/linked_list.cpp -Iinclude -o tests_bin
-./tests_bin
-```
+  Sim, pois em um cenário onde as rotas de ônibus fossem circulares, ou seja, ao passar pelo último ponto ela voltaria ao primeiro, 
+  formando assim um loop, a Lista Circular seria a melhor escolha para usar nesse código, pois nesse estilo de lista, o último elemento
+  aponta sempre para o primeiro, permitindo uma navegação contínua.

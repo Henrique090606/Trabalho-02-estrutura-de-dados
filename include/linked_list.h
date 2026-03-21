@@ -1,26 +1,31 @@
 #ifndef LINKED_LIST_H
 #define LINKED_LIST_H
+#include <string>
+
+using namespace std;
 
 struct Node {
-    int conteudo;
+    string nome;
     Node* proximo;
+    Node* anterior;
 };
 
-struct ListaSimplesmenteEncadeada {
+struct ListaDuplamenteEncadeada {
     int cardinalidade;
     Node* inicio;
 };
 
-ListaSimplesmenteEncadeada* criaLista();
-void destroiLista(ListaSimplesmenteEncadeada &lista);
-void insereInicio(ListaSimplesmenteEncadeada &lista, int conteudo);
-bool verificaPosicaoValida(ListaSimplesmenteEncadeada &lista, int posicao);
-int recuperaElemento(ListaSimplesmenteEncadeada &lista, int posicao);
-int numeroElementos(ListaSimplesmenteEncadeada &lista);
-void mostraLista(ListaSimplesmenteEncadeada &lista);
-bool listaVazia(ListaSimplesmenteEncadeada &lista);
-void inserePosicao(ListaSimplesmenteEncadeada &lista, int conteudo, int posicao);
-void removeElemento(ListaSimplesmenteEncadeada &lista, int posicao);
-void inverteLista(ListaSimplesmenteEncadeada &lista);
+ListaDuplamenteEncadeada* criaLista();
+void insereInicio(ListaDuplamenteEncadeada &lista, string conteudo);
+void insereFinal(ListaDuplamenteEncadeada &lista, string conteudo);
+bool ehVazia(ListaDuplamenteEncadeada &lista);
+bool verificaPosicaoValida(ListaDuplamenteEncadeada &lista, int posicao);
+void inserePosicao(ListaDuplamenteEncadeada &lista, string conteudo, string posicao);
+void removePrimeiraParada(ListaDuplamenteEncadeada &lista);
+void removeUltimaParada(ListaDuplamenteEncadeada &lista);
+void buscaNomeParada(ListaDuplamenteEncadeada &lista, string nome);
+void mostraRota(ListaDuplamenteEncadeada &lista);
+void mostraRotaContraria(ListaDuplamenteEncadeada &lista);
+int contagemParadas(ListaDuplamenteEncadeada &lista);
 
 #endif // LINKED_LIST_H

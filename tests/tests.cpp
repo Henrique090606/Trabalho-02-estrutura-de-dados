@@ -4,160 +4,101 @@
 
 using namespace std;
 
-// ===== TESTES DA FUNÇÃO criaLista =====
 void teste_criaLista() {
-    cout << "Testando criaLista()..." << endl;
-
-    ListaSimplesmenteEncadeada* lista = criaLista();
-    assert(lista != NULL);
+    cout<< "Teste: criaLista()" << endl;
+    ListaDuplamenteEncadeada* lista = criaLista();
+    assert(lista != nullptr);
     assert(lista->cardinalidade == 0);
-    assert(lista->inicio == NULL);
-
-    free(lista);
-    cout << "criaLista() passou em todos os testes" << endl;
+    assert(lista->inicio == nullptr);
+    delete lista;
+    cout << "Teste criaLista() passou!" << endl;
 }
 
-// ===== TESTES DA FUNÇÃO insere (inserção no início) =====
 void teste_insere() {
-    cout << "Testando insere()..." << endl;
-
-    ListaSimplesmenteEncadeada* lista = criaLista();
-
-    // Insere primeiro elemento
-    insereInicio(*lista, 10);
+    cout<< "Teste: insereInicio() e insereFinal()" << endl;
+    ListaDuplamenteEncadeada* lista = criaLista();
+    insereInicio(*lista, "Parada A");
     assert(lista->cardinalidade == 1);
-    assert(lista->inicio != NULL);
-    assert(lista->inicio->conteudo == 10);
-    assert(lista->inicio->proximo == NULL);
+    assert(lista->inicio->nome == "Parada A");
 
-    // Insere segundo elemento (deve ficar no início)
-    insereInicio(*lista, 20);
+    insereFinal(*lista, "Parada B");
     assert(lista->cardinalidade == 2);
-    assert(lista->inicio->conteudo == 20);
-    assert(lista->inicio->proximo->conteudo == 10);
+    assert(lista->inicio->proximo->nome == "Parada B");
 
-    // Insere terceiro elemento
-    insereInicio(*lista, 30);
-    assert(lista->cardinalidade == 3);
-    assert(lista->inicio->conteudo == 30);
-    assert(lista->inicio->proximo->conteudo == 20);
-    assert(lista->inicio->proximo->proximo->conteudo == 10);
-
-    destroiLista(*lista);
-    free(lista);
-    cout << "insere() passou em todos os testes" << endl;
-}
-
-// ===== TESTES DA FUNÇÃO destroiLista =====
-void teste_destroiLista() {
-    cout << "Testando destroiLista()..." << endl;
-
-    ListaSimplesmenteEncadeada* lista = criaLista();
-
-    // Insere elementos
-    insereInicio(*lista, 1);
-    insereInicio(*lista, 2);
-    insereInicio(*lista, 3);
-
-    // Destrói a lista
-    destroiLista(*lista);
-
-    assert(lista->cardinalidade == 0);
-    assert(lista->inicio == NULL);
-
-    free(lista);
-    cout << "destroiLista() passou em todos os testes" << endl;
-}
-
-void teste_mostraLista() {
-    cout << "Testando mostraLista()..." << endl;
-
-    ListaSimplesmenteEncadeada* lista = criaLista();
-
-    
-    insereInicio(*lista, 1);
-    insereInicio(*lista, 2);
-    insereInicio(*lista, 3);
-
-    cout << "Conteúdo da lista (deve ser 3 2 1): ";
-    mostraLista(*lista);
-
-    destroiLista(*lista);
-    free(lista);
-    cout << "mostraLista() passou em todos os testes" << endl;
+    delete lista;
+    cout << "Teste insereInicio() e insereFinal() passou!" << endl;
 }
 
 void teste_removeElemento() {
-    cout << "Testando removeElemento()..." << endl;
-
-    ListaSimplesmenteEncadeada* lista = criaLista();
-
-   
-    insereInicio(*lista, 1);
-    insereInicio(*lista, 2);
-    insereInicio(*lista, 3);
-
-    
-    removeElemento(*lista, 1);
-    assert(lista->cardinalidade == 2);
-    assert(lista->inicio->conteudo == 3);
-    assert(lista->inicio->proximo->conteudo == 1);
-
-    
-    removeElemento(*lista, 0);
+    cout<< "Teste: removePrimeiraParada() e removeUltimaParada()" << endl;
+    ListaDuplamenteEncadeada* lista = criaLista();
+    insereInicio(*lista, "Parada A");
+    insereFinal(*lista, "Parada B");
+    removePrimeiraParada(*lista);
     assert(lista->cardinalidade == 1);
-    assert(lista->inicio->conteudo == 1);
+    assert(lista->inicio->nome == "Parada B");
 
-    
-    removeElemento(*lista, 0);
+    removeUltimaParada(*lista);
     assert(lista->cardinalidade == 0);
-    assert(lista->inicio == NULL);
+    assert(lista->inicio == nullptr);
 
-    destroiLista(*lista);
-    free(lista);
-    cout << "removeElemento() passou em todos os testes" << endl;
-}
-
-void teste_inverteLista() {
-    cout << "Testando inverteLista()..." << endl;
-
-    ListaSimplesmenteEncadeada* lista = criaLista();
-    
-    insereInicio(*lista, 1);
-    insereInicio(*lista, 2);
-    insereInicio(*lista, 3);
-
-    
-    inverteLista(*lista);
-    assert(lista->cardinalidade == 3);
-    assert(lista->inicio->conteudo == 1);
-    assert(lista->inicio->proximo->conteudo == 2);
-    assert(lista->inicio->proximo->proximo->conteudo == 3);
-
-    destroiLista(*lista);
-    free(lista);
-    cout << "inverteLista() passou em todos os testes" << endl;
+    delete lista;
+    cout << "Teste removePrimeiraParada() e removeUltimaParada() passou!" << endl;
 }
 
 void teste_verificaPosicaoValida() {
-    cout << "Testando verificaPosicaoValida()..." << endl;
-
-    ListaSimplesmenteEncadeada* lista = criaLista();
-
-    
-    insereInicio(*lista, 1);
-    insereInicio(*lista, 2);
-    insereInicio(*lista, 3);
+    cout<< "Teste: verificaPosicaoValida()" << endl;
+    ListaDuplamenteEncadeada* lista = criaLista();
+    insereInicio(*lista, "Parada A");
+    insereFinal(*lista, "Parada B");
 
     assert(verificaPosicaoValida(*lista, 0) == true);
     assert(verificaPosicaoValida(*lista, 1) == true);
-    assert(verificaPosicaoValida(*lista, 2) == true);
-    assert(verificaPosicaoValida(*lista, 3) == false);
+    assert(verificaPosicaoValida(*lista, 2) == false);
     assert(verificaPosicaoValida(*lista, -1) == false);
 
-    destroiLista(*lista);
-    free(lista);
-    cout << "verificaPosicaoValida() passou em todos os testes" << endl;
+    delete lista;
+    cout << "Teste verificaPosicaoValida() passou!" << endl;
+}
+
+void teste_buscaNomeParada() {
+    cout<< "Teste: buscaNomeParada()" << endl;
+    ListaDuplamenteEncadeada* lista = criaLista();
+    insereInicio(*lista, "Parada A");
+    insereFinal(*lista, "Parada B");
+
+    buscaNomeParada(*lista, "Parada A");
+    buscaNomeParada(*lista, "Parada B");
+    buscaNomeParada(*lista, "Parada C");
+    cout << "Teste buscaNomeParada() passou!" << endl;
+
+    delete lista;
+}
+
+void teste_mostraLista() {
+    cout<< "Teste: mostraRota() e mostraRotaContraria()" << endl;
+    ListaDuplamenteEncadeada* lista = criaLista();
+    insereInicio(*lista, "Parada A");
+    insereFinal(*lista, "Parada B");
+
+    mostraRota(*lista);
+    mostraRotaContraria(*lista);
+
+    delete lista;
+    cout << "Teste mostraRota() e mostraRotaContraria() passou!" << endl;
+}
+
+void teste_contagemParadas() {
+    cout<< "Teste: contagemParadas()" << endl;
+    ListaDuplamenteEncadeada* lista = criaLista();
+    insereInicio(*lista, "Parada A");
+    insereFinal(*lista, "Parada B");
+    insereFinal(*lista, "Parada C");
+
+    assert(contagemParadas(*lista) == 3);
+
+    delete lista;
+    cout << "Teste contagemParadas() passou!" << endl;
 }
 
 // ===== FUNÇÃO PRINCIPAL =====
@@ -169,12 +110,11 @@ int main() {
     try {
         teste_criaLista();
         teste_insere();
-        teste_destroiLista();
         teste_mostraLista();
-        teste_inverteLista();
         teste_removeElemento();
         teste_verificaPosicaoValida();
-
+        teste_buscaNomeParada();
+        teste_contagemParadas();
 
         cout << "\n=========================================" << endl;
         cout << "  TODOS OS TESTES PASSARAM COM SUCESSO!" << endl;

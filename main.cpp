@@ -3,40 +3,67 @@
 
 using namespace std;
 
-int main() {
-    cout << "Exercício de Linked List" << endl;
-    cout << "------------------------\n" << endl;
-    
-    ListaSimplesmenteEncadeada* lista = criaLista();
-    
-    cout<<"Inserindo no inicio"<<endl;
-    insereInicio(*lista, 10);
-    mostraLista(*lista);
-    insereInicio(*lista, 20);
-    mostraLista(*lista);
-    insereInicio(*lista, 30);
-    mostraLista(*lista);
+string lerNomeParada();
 
-    cout<<"Removendo elemento"<<endl;
-    removeElemento(*lista, 0);
-    mostraLista(*lista);
+int main() {  
+    ListaDuplamenteEncadeada* lista = criaLista();
 
-    cout<<"Inserindo em posicao especifica"<<endl;
-    inserePosicao(*lista, 25, 1);
-    inserePosicao(*lista, 5, 0);
-    mostraLista(*lista);
+    int opcao;
     
-    cout<<"invertendo a lista"<<endl;
-    inverteLista(*lista);
-    mostraLista(*lista);
-    
-    cout<<"Numero de elementos: "<<numeroElementos(*lista)<<endl;
+    do{
+        do{
+            cout<<"-----------Menu de Opcoes----------- "<<endl;
+            cout<<"1) Inserir parada no inicio"<<endl;
+            cout<<"2) Inserir parada no final"<<endl;
+            cout<<"3) Remover primeira parada"<<endl;
+            cout<<"4) Remover ultima parada"<<endl;
+            cout<<"5) Buscar parada por nome"<<endl;
+            cout<<"6) Mostrar rota"<<endl;
+            cout<<"7) Mostrar rota contraria"<<endl;
+            cout<<"8) Contar paradas"<<endl;
+            cout<<"0) Sair"<<endl;
+            cin>>opcao;
+        }while(opcao<0 || opcao>8);
 
-    
-    cout<<"destruindo a lista"<<endl;
-    destroiLista(*lista);
-    mostraLista(*lista);
-    free(lista);
+        if(opcao == 1){
+            cout<<"-----------Inserir parada no inicio-----------"<<endl;
+            insereInicio(*lista, lerNomeParada());
+        }else if(opcao==2){
+            cout<<"-----------Inserir parada no final-----------"<<endl;
+            insereFinal(*lista, lerNomeParada());
+        }else if(opcao==3){
+            cout<<"-----------Remover primeira parada-----------"<<endl;
+            removePrimeiraParada(*lista);
+        }else if(opcao==4){
+            cout<<"-----------Remover ultima parada-----------"<<endl;
+            removeUltimaParada(*lista);
+        }else if(opcao==5){
+            cout<<"-----------Buscar parada por nome-----------"<<endl;
+            buscaNomeParada(*lista, lerNomeParada());
+        }else if(opcao==6){
+            cout<<"-----------Mostrar rota-----------"<<endl;
+            mostraRota(*lista);
+        }else if(opcao==7){
+            cout<<"-----------Mostrar rota contraria-----------"<<endl;
+            mostraRotaContraria(*lista);
+        }else if(opcao==8){
+            cout<<"-----------Contar paradas-----------"<<endl;
+            cout << "Numero de paradas: " << contagemParadas(*lista) << endl;
+        }
+
+    }while(opcao!=0);
+
+    cout<<"Saindo..."<<endl;
     
     return 0;
+}
+
+string lerNomeParada() {
+    string nome;
+    do{
+        cout << "Digite o nome da parada: ";
+        cin.ignore();
+        getline(cin, nome);
+    }while(nome.empty());
+    return nome;
 }
