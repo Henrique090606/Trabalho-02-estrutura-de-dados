@@ -1,3 +1,27 @@
+Comandos para rodar: 
+
+-Main:
+g++ main.cpp src/linked_list.cpp -Iinclude -o main
+./main
+
+-tests:
+g++ tests/tests.cpp src/linked_list.cpp -Iinclude -o tests
+.\tests
+
+Exemplo de saída:
+
+-----------Menu de Opcoes----------- 
+1) Inserir parada no inicio
+2) Inserir parada no final
+3) Remover primeira parada
+4) Remover ultima parada
+5) Buscar parada por nome
+6) Mostrar rota
+7) Mostrar rota contraria
+8) Contar paradas
+0) Sair
+
+
 Respondendo as perguntas:
 
 1. Qual variação de lista foi escolhida (simplesmente encadeada,
